@@ -45,6 +45,8 @@ deploy-job:      # This job runs in the deploy stage.
   image: ubuntu:latest
   stage: deploy  # It only runs when *both* jobs in the test stage complete successfully.
   environment: production
+  only:
+    - main
   script:
     - apt-get -yq update
     - apt-get -yqq install ssh
