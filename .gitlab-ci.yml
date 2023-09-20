@@ -42,8 +42,13 @@ lint-test-job:   # This job also runs in the test stage.
     - echo "No lint issues found."
 
 deploy-job:      # This job runs in the deploy stage.
+  image: ubuntu:latest
   stage: deploy  # It only runs when *both* jobs in the test stage complete successfully.
   environment: production
   script:
+    - apt-get -yq update
+    - apt-get -yqq install ssh
+    - echo $TOTO
+    - echo $MOT_DE_PASSE
     - echo "Deploying application..."
     - echo "Application successfully deployed."
